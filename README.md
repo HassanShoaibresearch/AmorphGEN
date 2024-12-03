@@ -2,6 +2,8 @@
 
 Welcome to the **AmorphGen** repository! This package provides tools to generate amorphous structures from 2D hexagonal lattices and analyze their properties. This README focuses on generating the structure and analyzing the resulting configurations.
 
+![Stone-Wales Transformation Algorithm](AmorphGen.png)
+
 ## Features
 
 - **Lattice Generation**: Generate lattice structures with defects and periodic boundary conditions.
@@ -68,10 +70,6 @@ Defects are introduced through a **Stone-Wales (S-W) Transformation**:
 
 4. **Connectivity Update**: The connectivity matrix is updated to reflect the new defect configuration.
 
-#### Visualizing the Algorithm
-The defect creation process is illustrated in the flowchart below:
-
-![Stone-Wales Transformation Algorithm](image.png)
 
 #### Output Files
 - **`connectivity_matrix.txt`**: Adjacency matrix defining bond connections.
