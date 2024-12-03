@@ -63,11 +63,13 @@ Defects are introduced through a **Stone-Wales (S-W) Transformation**:
 3. **Energy Optimization**: 
    - Calculate the energy difference (ΔE) before and after the transformation using molecular dynamics (MD) energy calculations.
    - The transformation is accepted if ΔE ≤ 0. Otherwise, it is probabilistically accepted with a weight:
-     
+
+$$
      \[ w = \begin{cases} 
      1, & \text{if } \Delta E \leq 0, \\
      \exp(-\beta \Delta E), & \text{if } \Delta E > 0.
      \end{cases} \]
+$$
 
 4. **Connectivity Update**: The connectivity matrix is updated to reflect the new defect configuration.
 
