@@ -1,6 +1,3 @@
-%author: Hassan Shoaib
-%email: hassan.shoaib@mail.mcgill.ca
-
 % Create directory for log files
 output_dir = 'log_files';
 if ~exist(output_dir, 'dir')
@@ -23,14 +20,14 @@ end
 
 % Initialize lattice parameters
 Nc = 4;   % Number of atoms in a unit cell
-Na1 = 70;  % Number of unit cells along x-axis
-Na2 = 110; % Number of unit cells along y-axis
+Na1 = 7;  % Number of unit cells along x-axis
+Na2 = 11; % Number of unit cells along y-axis
 Np = Na1 * Na2 * Nc;   % Total number of atoms in the lattice
 Nb = ones(Np, 1);   % Initialize neighbor count for each atom
 Nb = 3 * Nb;         % Set initial neighbor count to 3 for each atom (honeycomb lattice)
 Lx = 3.0 * Na1;      % Lattice width
 Ly = sqrt(3) * Na2;  % Lattice height
-Nd = 308;     % Number of defects to introduce
+Nd = 2;     % Number of defects to introduce
 
 % Define the relative positions of atoms within the unit cell
 a = [0.5 sqrt(3)/2.0; 1.0 0.0; 2.0 0.0; 2.5 sqrt(3)/2.0];
