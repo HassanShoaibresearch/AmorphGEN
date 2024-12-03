@@ -11,6 +11,7 @@ Welcome to the **AmorphGen** repository! This package provides tools to generate
 - **Periodic Boundary Conditions**: Ensures lattice generation and visualization respect periodic boundaries.
 - **Defect Creation**: Introduce defects into the lattice and relax the structure using Monte Carlo simulations.
 - **Structure Analysis**: Analyze bond lengths, bond angles, ring statistics, and local order parameters.
+- **Extended XYZ Conversion**: Convert the structures to extended XYZ format for further use in visualization or simulation software.
 
 ---
 
@@ -26,7 +27,7 @@ To use this package:
 
 ---
 
-## Usage
+## Generating structures (Defect_generator.m)
 
 ### Lattice Generation
 The package generates a hexagonal lattice with a specified number of unit cells and defects.
@@ -52,7 +53,7 @@ The package generates a hexagonal lattice with a specified number of unit cells 
 Nc = 4; Na1 = 7; Na2 = 11; Nd = 2; scaling_factor = 1.428;
 
 % Generate the lattice
-amorphous_structure_generator(Nc, Na1, Na2, Nd, scaling_factor);
+Defect_generator(Nc, Na1, Na2, Nd, scaling_factor);
 ```
 
 ### Defect Creation
@@ -91,7 +92,7 @@ After generating the lattice and introducing defects, the structure is relaxed u
 relax();
 ```
 
-### Structure Analysis
+## Structure Analysis (struc_analyzer.m)
 The resulting structure can be analyzed to extract key properties such as bond lengths, bond angles, ring statistics, and local order parameters.
 
 #### How It Works
@@ -100,25 +101,12 @@ The resulting structure can be analyzed to extract key properties such as bond l
    - Compute bond angles for each atom based on its neighbors.
 
 2. **Ring Statistics**:
-   - Identify rings of various sizes using Python integration.
+   - Identify rings of various sizes using Python integration through `ring_statistics.py`.
    - Plot the distribution of ring sizes.
 
 3. **Triatic Order Parameter (q₃)**:
    - Quantify the local atomic environment symmetry using spherical harmonics.
 
-#### Example MATLAB Usage
-```matlab
-% Load vertex and connectivity data
-A = dlmread('log_files/vertex.txt');
-N = A(1, 1);
-Lx = A(2, 1);
-Ly = A(3, 2);
-vertex = A(4:3+N, :);
-H1 = dlmread('log_files/connectivity_matrix.txt');
-
-% Analyze structure
-analyze_structure(vertex, H1, Lx, Ly);
-```
 
 #### Output Files
 - **Structure Plot**: Visualization of the lattice with periodic boundaries (`log_files_plot/structure_plot.png`).
@@ -126,45 +114,20 @@ analyze_structure(vertex, H1, Lx, Ly);
 - **Ring Statistics**: Distribution of ring sizes (`log_files_plot/ring_statistics_plot.png`).
 - **Triatic Order Parameter**: Average q₃ value displayed in the console.
 
-#### Example Python Integration
-```python
-import numpy as np
-from ring_statistics import ring_statistics
 
-# Load vertex data
-vertex = np.loadtxt('log_files/vertex.txt', skiprows=4)
-N = int(vertex.shape[0])
-
-# Ring analysis
-rings = ring_statistics(N, vertex, cutoff=2, max_ring_size=9)
-print("Detected Rings:", rings)
-```
-
-#### Detailed Steps
-1. **Plot Lattice**: Visualize the structure with bonds and periodic boundaries.
-2. **Histogram Plots**: Generate histograms for bond lengths and bond angles.
-3. **Ring Detection**: Use Python scripts to identify and count ring sizes in the structure.
-4. **Triatic Order Calculation**: Compute q₃ values for each atom and calculate the average.
 
 ---
 
-### LAMMPS Integration
-The generated structure can be exported to LAMMPS input files for molecular dynamics simulations.
+## Extended XYZ Conversion (convertoxyz.m)
+Structures can be exported to the extended XYZ format for visualization or use in other tools.
 
-#### How It Works
-1. **Data File**: Atom positions and box dimensions are written to a LAMMPS data file.
-2. **Input Script**: A LAMMPS input script is generated to define simulation parameters such as pair styles, boundary conditions, and minimization settings.
 
-#### Example Usage
-```matlab
-% Generate LAMMPS data file
-generate_lammps_data('data.lmp', vertex, Lx, Ly);
-
-% Generate LAMMPS input script
-generate_lammps_input('input.lmp', 'data.lmp');
-```
+#### Output File
+- **Extended XYZ File**: A standard `.xyz` file containing atom coordinates and box dimensions (`output_structure.xyz`).
 
 ---
+
+
 
 ## Contributing
 Contributions are welcome! Please:
@@ -172,15 +135,11 @@ Contributions are welcome! Please:
 2. Create a feature branch.
 3. Submit a pull request with details about your changes.
 
----
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
 ## Contact
-For questions or feedback, feel free to open an issue or contact the repository owner.
+For questions or feedback, feel free to open an issue or contact me.
 
 Happy coding!
 
