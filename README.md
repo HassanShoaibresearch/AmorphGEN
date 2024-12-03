@@ -2,7 +2,7 @@
 
 Welcome to the **AmorphGen** repository! This package provides tools to generate amorphous structures from 2D hexagonal lattices and analyze their properties. This README focuses on generating the structure and analyzing the resulting configurations.
 
-![Stone-Wales Transformation Algorithm](AmorphGen.png)
+![Stone-Wales Transformation Algorithm](AmorphGEN.png)
 
 ## Features
 
