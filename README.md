@@ -88,11 +88,6 @@ After generating the lattice and introducing defects, the structure is relaxed u
 2. **Energy Evaluation**: Bond lengths and angles are calculated to evaluate the total energy.
 3. **Acceptance Criteria**: A move is accepted if it reduces the energy or satisfies the Metropolis condition.
 
-#### Relaxation Example
-```matlab
-% Relax the structure
-relax();
-```
 
 ## Structure Analysis (struc_analyzer.m)
 The resulting structure can be analyzed to extract key properties such as bond lengths, bond angles, ring statistics, and local order parameters.
